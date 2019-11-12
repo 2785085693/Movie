@@ -4,11 +4,12 @@
     android:layout_height="match_parent"
     android:background="#141931"
     >
-    <TextView
+
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1111"
-
+        android:id="@+id/six_recyclerview"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         />
-
 </LinearLayout>

@@ -15,13 +15,51 @@
         android:background="#141931"
         />
 
-
-    <com.google.android.material.tabs.TabLayout
+    <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:id="@+id/tab"
-        android:background="#16173F"
-        app:tabTextColor="@android:color/white"
-        />
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:id="@+id/group_tab"
+        >
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="电影"
+            android:layout_gravity="center"
+            android:textColor="#fff"
+            android:background="#16173F"
+            android:button="@null"
+            android:gravity="center"
+            android:id="@+id/but_tably"
+            android:checked="true"
+            />
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="首页"
+            android:layout_gravity="center"
+            android:textColor="#fff"
+            android:button="@null"
+            android:background="#16173F"
+            android:gravity="center"
+            android:id="@+id/but_tably1"
+            />
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="我的"
+            android:layout_gravity="center"
+            android:textColor="#fff"
+            android:button="@null"
+            android:background="#16173F"
+            android:gravity="center"
+            android:id="@+id/but_tably2"
+            />
+
+    </RadioGroup>
+
+
 </LinearLayout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#141931"
+    >
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        >
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/seven_img"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="冷月女神"
+            android:textSize="12sp"
+            android:id="@+id/name_seve"
+            android:textColor="@android:color/white"
+            android:layout_toRightOf="@id/seven_img"
+            android:layout_marginLeft="10dp"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_toRightOf="@id/seven_img"
+            android:layout_below="@id/name_seve"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            >
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:text="★"
+                android:textColor="@android:color/white"
+                />
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:text="★"
+                android:textColor="@android:color/white"
+                />
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:text="★"
+                android:textColor="@android:color/white"
+                />
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:textColor="@android:color/white"
+                android:text="★"
+                />
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:text="★"
+                android:textColor="@android:color/white"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="9分"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:id="@+id/text_fen"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="04-24  09:15"
+            android:textSize="12sp"
+            android:textColor="#fff"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/text_time"
+            />
+        
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:text="111"
+        android:textColor="#fff"
+        android:textSize="12sp"
+        android:id="@+id/text_pl"
+        />
+
+
+</LinearLayout>

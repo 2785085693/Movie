@@ -1,7 +1,10 @@
 package com.bawie.movie.view.interfaces;
 
 import com.bawie.movie.model.bean.ComingMovieBean;
+import com.bawie.movie.model.bean.DetailsBean;
+import com.bawie.movie.model.bean.FindBean;
 import com.bawie.movie.model.bean.HotMovieBean;
+import com.bawie.movie.model.bean.RecomBean;
 import com.bawie.movie.model.bean.ReleaseMovieBean;
 
 public interface IHomeView {
@@ -32,5 +35,33 @@ public interface IHomeView {
     interface IHome extends IPresenter{
         void load(IBase iBase);
     }
+
+    //电影详情
+    interface IDeta extends IBaseView{
+        void deta(DetailsBean detailsBean);
+    }
+
+    interface IDetails extends IPresenter{
+        void detas(IDeta iDeta);
+    }
+
+    //电影详情
+    interface IFind extends IBaseView{
+        void find(FindBean findBean);
+    }
+
+    interface IFinds extends IPresenter{
+        void finds(IFind iFind);
+    }
+
+    //推荐影院
+    interface IRecom extends IBaseView{
+        void recom(RecomBean recomBean);
+    }
+
+    interface Irecoms extends IPresenter{
+        void recoms(IRecom irecom);
+    }
+
 
 }

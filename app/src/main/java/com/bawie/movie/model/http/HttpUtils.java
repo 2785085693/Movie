@@ -1,8 +1,10 @@
 package com.bawie.movie.model.http;
 
+import com.bawie.movie.model.bean.DetailsBean;
 import com.bawie.movie.presenter.HomePresenter;
 
 import java.io.IOException;
+import java.util.Map;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -140,4 +142,121 @@ public class HttpUtils {
                     }
                 });
     }
+    //电影详情
+    public void getDetails(final HomePresenter.myCallBack myCall){
+        builder = new Retrofit.Builder()
+                .baseUrl("http://172.17.8.100/movieApi/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+        API api = builder.create(API.class);
+        Observable<ResponseBody> detai = api.Detai();
+        detai.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseBody>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            myCall.succes(string);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    //电影评论
+    public void getFind(final HomePresenter.myCallBack myCall){
+        builder = new Retrofit.Builder()
+                .baseUrl("http://172.17.8.100/movieApi/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+        API api = builder.create(API.class);
+        Observable<ResponseBody> finds = api.find();
+        finds.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseBody>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            myCall.succes(string);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    //推荐影院
+    public void getRecom(final HomePresenter.myCallBack myCall){
+        builder = new Retrofit.Builder()
+                .baseUrl("http://172.17.8.100/movieApi/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+        API api = builder.create(API.class);
+        Observable<ResponseBody> recoms = api.recom();
+        recoms.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseBody>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            myCall.succes(string);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
 }

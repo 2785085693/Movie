@@ -1,25 +1,28 @@
 package com.bawie.movie.view.activity;
 
+import android.widget.RadioGroup;
+
 import com.bawie.movie.R;
 import com.bawie.movie.presenter.BasePresenter;
-import com.bawie.movie.view.adapter.FragAdapter;
 import com.bawie.movie.view.fragment.FragmentOne;
 import com.bawie.movie.view.fragment.FragmentThree;
 import com.bawie.movie.view.fragment.FragmentTwo;
-import com.google.android.material.tabs.TabLayout;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 public class TabActivity extends BaseActivity{
 
-    private TabLayout tab;
+
     private ViewPager pager;
-    private List<Fragment> list;
-    private FragAdapter fragAdapter;
+    private List<Fragment> list = new ArrayList<>();
+    private RadioGroup group_tab;
 
 
     @Override
@@ -34,32 +37,71 @@ public class TabActivity extends BaseActivity{
 
     @Override
     void initView() {
-        tab = findViewById(R.id.tab);
 
-        List<String> tab2=new ArrayList<>();
-        tab2.add("电影");
-        tab2.add("首页");
-        tab2.add("我的");
+        group_tab = findViewById(R.id.group_tab);
 
         pager = findViewById(R.id.pager);
-        tab.setupWithViewPager(pager);
-        list = new ArrayList<>();
-        list.add(new FragmentOne());
-        list.add(new FragmentTwo());
-        list.add(new FragmentThree());
 
-        for (int i = 0; i <tab2.size() ; i++) {
-            final String s = tab2.get(i);
-            final TabLayout.Tab tab1 = this.tab.newTab();
-            if (tab1!=null){
-                tab1.setText(s);
-                tab.addTab(tab1);
+        FragmentOne fragmentOne = new FragmentOne();
+        FragmentTwo fragmentTwo = new FragmentTwo();
+        FragmentThree fragmentThree = new FragmentThree();
+
+        list.add(fragmentOne);
+        list.add(fragmentTwo);
+        list.add(fragmentThree);
+        pager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @NonNull
+            @Override
+            public Fragment getItem(int position) {
+                return list.get(position);
             }
 
-        }
-        tab.setupWithViewPager(pager);
-        fragAdapter = new FragAdapter(getSupportFragmentManager(), list, tab2);
-        pager.setAdapter(fragAdapter);
+            @Override
+            public int getCount() {
+                return list.size();
+            }
+        });
+
+
+        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                group_tab.check(group_tab.getChildAt(position).getId());
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+
+
+        });
+        group_tab.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.but_tably:
+
+                        pager.setCurrentItem(0);
+                        break;
+
+                    case R.id.but_tably1:
+                        pager.setCurrentItem(1);
+                        break;
+
+                    case R.id.but_tably2:
+                        pager.setCurrentItem(2);
+                        break;
+                }
+            }
+        });
+
+
 
     }
 

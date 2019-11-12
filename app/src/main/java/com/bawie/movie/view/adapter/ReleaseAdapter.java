@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class ReleaseAdapter extends RecyclerView.Adapter {
     private List<ReleaseMovieBean.ResultBean> list;
     private Context context;
-
+    private int movieId;
 
 
     public ReleaseAdapter(List<ReleaseMovieBean.ResultBean> list, Context context) {
@@ -44,7 +44,7 @@ public class ReleaseAdapter extends RecyclerView.Adapter {
         viewHolder.textView_fen.setText(list.get(position).getScore()+"分");
         viewHolder.textView_name.setText(list.get(position).getName());
         Glide.with(context).load(list.get(position).getImageUrl()).into(viewHolder.imageView_showitem);
-
+        movieId = list.get(position).getMovieId();
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,6 +52,7 @@ public class ReleaseAdapter extends RecyclerView.Adapter {
                 intent.putExtra("name",list.get(position).getImageUrl());
                 intent.putExtra("name1",list.get(position).getScore()+"");
                 intent.putExtra("name2",list.get(position).getName());
+                intent.putExtra("movieId",movieId);
                 context.startActivity(intent);
             }
         });

@@ -2,12 +2,16 @@ package com.bawie.movie.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.bawie.movie.R;
+import com.bawie.movie.model.bean.DetailsBean;
 import com.bawie.movie.model.bean.HotMovieBean;
 import com.bawie.movie.presenter.HomePresenter;
+import com.bawie.movie.view.adapter.BootAdapter;
 import com.bawie.movie.view.adapter.FragAdapter;
 import com.bawie.movie.view.fragment.FragmentOne;
 import com.bawie.movie.view.fragment.FragmentThree;
@@ -24,9 +28,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
-public class ShowActivity extends BaseActivity<HomePresenter> implements IHomeView.IBase {
+public class ShowActivity extends BaseActivity<HomePresenter> implements IHomeView.IDeta {
 
 
     private ImageView boot_ImageView;
@@ -36,9 +42,12 @@ public class ShowActivity extends BaseActivity<HomePresenter> implements IHomeVi
     private TextView tiao;
     private TabLayout boot_TabLayout;
     private ViewPager boot_ViewPager;
+    private RecyclerView recyclerview_boot;
 
     private List<Fragment> list;
     private FragAdapter fragAdapter;
+    private RadioButton filmreview;
+    private String movieId;
 
     @Override
     protected void initData() {
@@ -46,10 +55,17 @@ public class ShowActivity extends BaseActivity<HomePresenter> implements IHomeVi
         String name = intent.getExtras().getString("name");
         String name1 = intent.getExtras().getString("name1");
         String name2 = intent.getExtras().getString("name2");
+        movieId = intent.getStringExtra("movieId");
 
         fen.setText(name1);
         textView_fen.setText(name2);
         Glide.with(this).load(name).into(boot_ImageView);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(RecyclerView.VERTICAL);
+        recyclerview_boot.setLayoutManager(layoutManager);
+        p.detas(this);
+
     }
 
     @Override
@@ -64,7 +80,17 @@ public class ShowActivity extends BaseActivity<HomePresenter> implements IHomeVi
         boot_ImageView = findViewById(R.id.boot_ImageView);
         boot_TabLayout = findViewById(R.id.boot_TabLayout);
         boot_ViewPager = findViewById(R.id.boot_ViewPager);
+        recyclerview_boot = findViewById(R.id.recyclerview_boot);
+        recyclerview_boot = findViewById(R.id.recyclerview_boot);
+        filmreview = findViewById(R.id.filmreview);
 
+        filmreview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Intent intent = new Intent(ShowActivity.this, FilmreActivity.class);
+                startActivity(intent);
+            }
+        });
 
         List<String> tab2=new ArrayList<>();
         tab2.add("介绍");
@@ -99,8 +125,12 @@ public class ShowActivity extends BaseActivity<HomePresenter> implements IHomeVi
     }
 
     @Override
-    public void ok(HotMovieBean hotMovieBean) {
+    public void deta(DetailsBean detailsBean) {
+        DetailsBean.ResultBean result = detailsBean.getResult();
+        List<DetailsBean.ResultBean> list = new ArrayList<>();
+        list.add(result);
 
+        BootAdapter bootAdapter = new BootAdapter(list, this);
+        recyclerview_boot.setAdapter(bootAdapter);
     }
-
 }
