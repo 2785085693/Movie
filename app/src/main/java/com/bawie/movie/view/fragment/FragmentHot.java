@@ -39,6 +39,7 @@ public class FragmentHot extends BaseFragment<HomePresenter> implements IHomeVie
 
     @Override
     public void ok(HotMovieBean hotMovieBean) {
+
         MyAdapter1 myAdapter1 = new MyAdapter1(hotMovieBean.getResult(), getContext());
         recyclerview_hot.setAdapter(myAdapter1);
     }

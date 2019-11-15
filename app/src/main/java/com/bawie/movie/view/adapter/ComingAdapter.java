@@ -32,7 +32,6 @@ public class ComingAdapter extends RecyclerView.Adapter {
         View inflate = LayoutInflater.from(context).inflate(R.layout.showitem1, null);
         ViewHolder viewHolder = new ViewHolder(inflate);
 
-
         return viewHolder;
     }
 

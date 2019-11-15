@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':day_01', ':day_05'
 rootProject.name='Movie'

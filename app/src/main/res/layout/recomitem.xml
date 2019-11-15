@@ -17,6 +17,8 @@
             android:id="@+id/recom_image"
             android:layout_marginLeft="10dp"
             android:scaleType="fitXY"
+            android:layout_margin="10dp"
+
             />
         <TextView
             android:layout_width="match_parent"

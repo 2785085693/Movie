@@ -38,5 +38,6 @@
         android:background="#FF00A4"
         android:textColor="#fff"
         android:layout_marginTop="10dp"
+        android:id="@+id/but_gou"
         />
 </LinearLayout>

@@ -51,10 +51,9 @@ public class IHotAdapter extends RecyclerView.Adapter {
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView imageView_showitem;
-        private TextView textview3;
-        private TextView textview4;
-
+        ImageView imageView_showitem;
+        TextView textview3;
+        TextView textview4;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

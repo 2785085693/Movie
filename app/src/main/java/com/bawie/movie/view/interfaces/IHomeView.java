@@ -1,11 +1,15 @@
 package com.bawie.movie.view.interfaces;
 
+import com.bawie.movie.model.bean.CinemaBean;
 import com.bawie.movie.model.bean.ComingMovieBean;
 import com.bawie.movie.model.bean.DetailsBean;
 import com.bawie.movie.model.bean.FindBean;
 import com.bawie.movie.model.bean.HotMovieBean;
 import com.bawie.movie.model.bean.RecomBean;
+import com.bawie.movie.model.bean.RegionBean;
 import com.bawie.movie.model.bean.ReleaseMovieBean;
+
+import java.util.Map;
 
 public interface IHomeView {
 
@@ -63,5 +67,24 @@ public interface IHomeView {
         void recoms(IRecom irecom);
     }
 
+    //区域
+    interface IRegiog extends IBaseView{
+        void iregi(RegionBean regionBean);
+    }
+    interface IRegions extends IPresenter{
+        void iregion(IRegiog iRegiog);
+    }
+
+    //查询影院
+    interface ICinema extends IBaseView{
+        void cinem(CinemaBean cinemaBean);
+    }
+    interface ICinemas extends IPresenter{
+        void icinema(ICinema iCinema);
+    }
+
+    interface doGuild extends IBaseView{
+        void doGuilds(Map<String,String> map);
+    }
 
 }

@@ -1,7 +1,6 @@
 package com.bawie.movie.view.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -9,13 +8,9 @@ import android.widget.TextView;
 
 import com.bawie.movie.R;
 import com.bawie.movie.model.bean.DetailsBean;
-import com.bawie.movie.model.bean.HotMovieBean;
 import com.bawie.movie.presenter.HomePresenter;
 import com.bawie.movie.view.adapter.BootAdapter;
 import com.bawie.movie.view.adapter.FragAdapter;
-import com.bawie.movie.view.fragment.FragmentOne;
-import com.bawie.movie.view.fragment.FragmentThree;
-import com.bawie.movie.view.fragment.FragmentTwo;
 import com.bawie.movie.view.fragment.FragmentfFive;
 import com.bawie.movie.view.fragment.FragmentfFore;
 import com.bawie.movie.view.fragment.FragmentfSeven;
@@ -26,6 +21,8 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -43,22 +40,25 @@ public class ShowActivity extends BaseActivity<HomePresenter> implements IHomeVi
     private TabLayout boot_TabLayout;
     private ViewPager boot_ViewPager;
     private RecyclerView recyclerview_boot;
-
+    private ImageView dianji;
     private List<Fragment> list;
     private FragAdapter fragAdapter;
     private RadioButton filmreview;
-    private String movieId;
+    private RadioButton goupiao;
+   // private String movieId;
+
+
 
     @Override
     protected void initData() {
         Intent intent = getIntent();
         String name = intent.getExtras().getString("name");
         String name1 = intent.getExtras().getString("name1");
-        String name2 = intent.getExtras().getString("name2");
-        movieId = intent.getStringExtra("movieId");
+      //  String name2 = intent.getExtras().getString("name2");
+      //  movieId = intent.getStringExtra("movieId");
 
         fen.setText(name1);
-        textView_fen.setText(name2);
+       // textView_fen.setText(name2);
         Glide.with(this).load(name).into(boot_ImageView);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -76,6 +76,7 @@ public class ShowActivity extends BaseActivity<HomePresenter> implements IHomeVi
     @Override
     void initView() {
         fen = findViewById(R.id.fen);
+        goupiao = findViewById(R.id.goupiao);
         textView_fen = findViewById(R.id.textView_fen);
         boot_ImageView = findViewById(R.id.boot_ImageView);
         boot_TabLayout = findViewById(R.id.boot_TabLayout);
@@ -84,13 +85,6 @@ public class ShowActivity extends BaseActivity<HomePresenter> implements IHomeVi
         recyclerview_boot = findViewById(R.id.recyclerview_boot);
         filmreview = findViewById(R.id.filmreview);
 
-        filmreview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final Intent intent = new Intent(ShowActivity.this, FilmreActivity.class);
-                startActivity(intent);
-            }
-        });
 
         List<String> tab2=new ArrayList<>();
         tab2.add("介绍");
@@ -117,6 +111,36 @@ public class ShowActivity extends BaseActivity<HomePresenter> implements IHomeVi
 
         fragAdapter = new FragAdapter(getSupportFragmentManager(), list, tab2);
         boot_ViewPager.setAdapter(fragAdapter);
+
+        dianji = findViewById(R.id.dianji);
+
+        dianji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (view.getId()){
+                    case R.id.dianji:
+                        finish();
+                        break;
+                }
+
+            }
+        });
+
+        filmreview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ShowActivity.this, FilmreActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        goupiao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ShowActivity.this, GouPiaoActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

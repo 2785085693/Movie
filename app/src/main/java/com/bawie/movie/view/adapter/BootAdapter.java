@@ -30,7 +30,6 @@ public class BootAdapter extends RecyclerView.Adapter {
         View inflate = LayoutInflater.from(context).inflate(R.layout.bootitem, null);
         ViewHolder viewHolder = new ViewHolder(inflate);
 
-
         return viewHolder;
     }
 

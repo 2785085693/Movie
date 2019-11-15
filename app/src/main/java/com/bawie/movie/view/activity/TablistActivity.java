@@ -1,6 +1,8 @@
 package com.bawie.movie.view.activity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.bawie.movie.R;
 import com.bawie.movie.presenter.BasePresenter;
@@ -23,6 +25,7 @@ public class TablistActivity extends BaseActivity {
     private ViewPager pager_list;
     private List<Fragment> list;
     private FragAdapter fragAdapter;
+    private ImageView dianji;
     @Override
     void initData() {
 
@@ -37,6 +40,18 @@ public class TablistActivity extends BaseActivity {
     void initView() {
         tabLayout_list = findViewById(R.id.tabLayout_list);
         pager_list = findViewById(R.id.pager_list);
+        dianji = findViewById(R.id.dianji);
+
+        dianji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (view.getId()){
+                    case R.id.dianji:
+                        finish();
+                        break;
+                }
+            }
+        });
 
         List<String> tab2=new ArrayList<>();
         tab2.add("正在热映");

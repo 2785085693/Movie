@@ -43,4 +43,9 @@ public abstract class BaseFragment<F extends BasePresenter> extends Fragment imp
 
     abstract int initLayout();
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        f.detach();
+    }
 }

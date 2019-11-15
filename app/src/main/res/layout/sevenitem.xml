@@ -36,43 +36,24 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             >
-            <TextView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:text="★"
-                android:textColor="@android:color/white"
-                />
-            <TextView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:text="★"
-                android:textColor="@android:color/white"
-                />
-            <TextView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:text="★"
-                android:textColor="@android:color/white"
-                />
-            <TextView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:textColor="@android:color/white"
-                android:text="★"
-                />
-            <TextView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:text="★"
-                android:textColor="@android:color/white"
-                />
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:isIndicator="false"
+                android:numStars="5"
+                style="?android:attr/ratingBarStyleSmall"
+                android:rating="2.5"
+                android:progressBackgroundTint="@android:color/white"
+                android:progressTint="@android:color/white"
+                android:stepSize="0.5" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="9分"
-                android:textColor="@android:color/white"
-                android:textSize="12sp"
                 android:id="@+id/text_fen"
+                android:layout_marginLeft="5dp"
+                android:text="1"
+                android:textColor="#fff"
                 />
         </LinearLayout>
 

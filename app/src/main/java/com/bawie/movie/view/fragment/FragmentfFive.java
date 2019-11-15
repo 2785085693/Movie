@@ -1,9 +1,16 @@
 package com.bawie.movie.view.fragment;
 
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.View;
+
 import com.bawie.movie.R;
 import com.bawie.movie.model.bean.DetailsBean;
 import com.bawie.movie.presenter.HomePresenter;
 import com.bawie.movie.view.interfaces.IHomeView;
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
 
 import cn.jzvd.JZVideoPlayer;
 import cn.jzvd.JZVideoPlayerStandard;
@@ -14,6 +21,8 @@ public class FragmentfFive extends BaseFragment<HomePresenter> implements IHomeV
 
     @Override
     void initData() {
+
+
         f.detas(this);
     }
 
@@ -25,10 +34,7 @@ public class FragmentfFive extends BaseFragment<HomePresenter> implements IHomeV
     @Override
     void initView() {
         videoplayer = inflate.findViewById(R.id.videoplayer);
-      /*  for (int i = 0; i <detailsBean.getResult().getShortFilmList().size(); i++) {
-            videoplayer.setUp(detailsBean.getResult().getShortFilmList().get(i).getVideoUrl(), JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL,"视频");
-        }
-        */
+
     }
 
     @Override
@@ -38,9 +44,16 @@ public class FragmentfFive extends BaseFragment<HomePresenter> implements IHomeV
 
     @Override
     public void deta(DetailsBean detailsBean) {
+
+
+
         for (int i = 0; i < detailsBean.getResult().getShortFilmList().size(); i++) {
-            videoplayer.setUp(detailsBean.getResult().getShortFilmList().get(i).getVideoUrl(), JZVideoPlayer.SCREEN_WINDOW_NORMAL,"视频");
+            videoplayer.setUp(detailsBean.getResult().getShortFilmList().get(i).
+                    getVideoUrl(), JZVideoPlayer.SCREEN_WINDOW_NORMAL,"视频");
+
         }
+
+
 
     }
 
@@ -49,4 +62,5 @@ public class FragmentfFive extends BaseFragment<HomePresenter> implements IHomeV
         super.onPause();
         JZVideoPlayerStandard.releaseAllVideos();
     }
+
 }

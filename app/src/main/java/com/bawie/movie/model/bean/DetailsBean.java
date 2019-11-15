@@ -266,7 +266,7 @@ public class DetailsBean {
             private String videoUrl;
 
             public String getImageUrl() {
-                return imageUrl;
+                return imageUrl.toString();
             }
 
             public void setImageUrl(String imageUrl) {
